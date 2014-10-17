@@ -5,7 +5,7 @@
 
 
 .PHONY: all
-all: bin/malloc bin/new
+all: bin/malloc bin/new bin/alloca
 
 
 bin/%: src/%.cc
