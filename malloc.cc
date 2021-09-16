@@ -6,14 +6,15 @@
  */
 #include <cstdlib>
 
-int main(void)
-{
-  char* a;
-  size_t i;
-  
-  for (i = 0; i < 40000000UL; i++)
-    a = new char[16];
-  
-  return 0;
-}
 
+int
+main(void)
+{
+	char *a;
+	size_t i;
+
+	for (i = 0; i < 40000000UL; i++)
+		a = (char *)malloc(16);
+
+	return 0;
+}

@@ -5,15 +5,17 @@
  * without any warranty.
  */
 #include <cstdlib>
+#include <alloca.h>
 
-int main(void)
+
+int
+main(void)
 {
-  char* a;
-  size_t i;
-  
-  for (i = 0; i < 40000000UL; i++)
-    a = (char*)malloc(16);
-  
-  return 0;
-}
+	char *a;
+	size_t i;
 
+	for (i = 0; i < 40000000UL; i++)
+		a = (char *)alloca(16);
+
+	return 0;
+}

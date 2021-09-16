@@ -2,17 +2,27 @@
 # are permitted in any medium without royalty provided the copyright
 # notice and this notice are preserved.  This file is offered as-is,
 # without any warranty.
+.POSIX:
+
+CXX = c++
+
+BIN = malloc new alloca
+OBJ = $(BIN:=.o)
 
 
-.PHONY: all
-all: bin/malloc bin/new bin/alloca
+all: $(BIN)
+$(OBJ):
 
+.cc.o:
+	$(CXX) -c -o $@ $< -O0
 
-bin/%: src/%.cc
-	@mkdir -p bin
-	$(CXX) -O0 -o $@ $^
+.o:
+	$(CXX) -o $@ $<
 
-.PHONY: clean
 clean:
-	-rm -r bin
+	-rm -f -- *.o $(BIN)
 
+.SUFFIXES:
+.SUFFIXES: .o .cc
+
+.PHONY: all clean
